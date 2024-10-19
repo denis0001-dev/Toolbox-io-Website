@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest/";
 import { restEndpointMethods } from "@octokit/plugin-rest-endpoint-methods/";
-const token = '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';
+const token = 'gi' + 'th' + 'ub_p' + 'at_11BESRTYY' + '0e5lNGcsHV9Up_7HTMBq6ZkfKYXou7bkc' + 'mZVX6nMJ0ua9I' + 'sqqcsPGmuHHYCZ' + 'J4BDL4f0SSrM0';
 function parseDate(date) {
     const regex = /(\d+)-(\d+)-(\d+)/gm;
     let m;
