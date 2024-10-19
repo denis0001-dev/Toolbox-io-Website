@@ -85,7 +85,7 @@ type ReleasesResponse = OctokitResponse<{
     } | undefined;
 }[], 200>;
 
-const token: string = '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'
+const token: string = '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'
 
 function parseDate(date: string): DateO | null {
     const regex = /(\d+)-(\d+)-(\d+)/gm;
@@ -123,7 +123,7 @@ function parseReleaseData(response: ReleasesResponse) : Release[] {
     response.data.forEach((item, index: number) => {
         const release: Release = {
             version: item.tag_name,
-            downloadUrl: item.assets[0].url,
+            downloadUrl: item.assets[0].browser_download_url,
             date: parseDate(item.created_at) as DateO,
             latest: index == 0,
             id: item.assets[0].id
@@ -229,24 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         releases.appendChild(releaseItem);
         (releaseItem.querySelector(".download") as MdFilledButton).addEventListener("click", async () => {
             try {
-                /* console.log(await octokit.rest.repos.getReleaseAsset({
-                    owner: 'denis0001-dev',
-                    repo: 'Anti-Intruder-Protection',
-                    asset_id: release.id,
-                    headers: {
-                        'Accepts': 'application/octet-stream'
-                    }
-                })); */
-                console.log(await fetch(`https://cors-anywhere.herokuapp.com/${release.downloadUrl.replace(/https?:\/\/(.*)/, "$1")}`), {
-                    method: "GET",
-                    headers: {
-                        accept: "application/octet-stream",
-                        authorization: `Bearer ${token}`,
-                        'X-GitHub-Api-Version': '2022-11-28',
-                        'user-agent': navigator.userAgent,
-                        origin: location.origin
-                    }
-                })
+                open(release.downloadUrl);
             } catch (error) {
                 console.error("Error downloading asset:", error);
             }

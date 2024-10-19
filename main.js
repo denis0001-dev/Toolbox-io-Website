@@ -34,7 +34,7 @@ function parseReleaseData(response) {
     response.data.forEach((item, index) => {
         const release = {
             version: item.tag_name,
-            downloadUrl: item.assets[0].url,
+            downloadUrl: item.assets[0].browser_download_url,
             date: parseDate(item.created_at),
             latest: index == 0,
             id: item.assets[0].id
@@ -130,24 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         releases.appendChild(releaseItem);
         releaseItem.querySelector(".download").addEventListener("click", async () => {
             try {
-                /* console.log(await octokit.rest.repos.getReleaseAsset({
-                    owner: 'denis0001-dev',
-                    repo: 'Anti-Intruder-Protection',
-                    asset_id: release.id,
-                    headers: {
-                        'Accepts': 'application/octet-stream'
-                    }
-                })); */
-                console.log(await fetch(`https://cors-anywhere.herokuapp.com/${release.downloadUrl.replace(/https?:\/\/(.*)/, "$1")}`), {
-                    method: "GET",
-                    headers: {
-                        accept: "application/octet-stream",
-                        authorization: `Bearer ${token}`,
-                        'X-GitHub-Api-Version': '2022-11-28',
-                        'user-agent': navigator.userAgent,
-                        origin: location.origin
-                    }
-                });
+                open(release.downloadUrl);
             }
             catch (error) {
                 console.error("Error downloading asset:", error);
