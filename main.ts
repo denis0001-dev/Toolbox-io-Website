@@ -85,7 +85,7 @@ type ReleasesResponse = OctokitResponse<{
     } | undefined;
 }[], 200>;
 
-const token: string = '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'
+const token: string = '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'
 
 function parseDate(date: string): DateO | null {
     const regex = /(\d+)-(\d+)-(\d+)/gm;
