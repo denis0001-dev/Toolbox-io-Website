@@ -18,6 +18,7 @@ html, body {
     top: 10px;
     z-index: 1000;
     user-select: none;
+    box-sizing: border-box;
 
     .icon {
         background-size: cover;
@@ -36,6 +37,8 @@ html, body {
         color: white;
         font-weight: bold;
         flex-shrink: 0;
+        transition-property: width, margin, padding;
+        box-sizing: border-box;
     }
 
     .separator {
@@ -64,6 +67,7 @@ html, body {
         margin-right: 10px;
         overflow-x: scroll;
         padding-top: 5px;
+        flex-shrink: 1;
 
         .tab {
             cursor: pointer;
@@ -197,10 +201,25 @@ html, body {
 }
 
 @media (max-width: 440px) {
-    body {
-        overflow-x: hidden;
-    }
+    #header {
+        /* margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        padding-left: 10px;
+        width: 100%;
+        top: 0; */
 
+        .title {
+            visibility: hidden;
+            width: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 360px) {
     #header {
         margin-top: 0;
         margin-left: 0;
