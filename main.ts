@@ -85,7 +85,7 @@ type ReleasesResponse = OctokitResponse<{
     } | undefined;
 }[], 200>;
 
-const token: string = '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'
+const token: string = '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'
 
 function parseDate(date: string): DateO | null {
     const regex = /(\d+)-(\d+)-(\d+)/gm;
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const response: ReleasesResponse = await octokit.request('GET /repos/{owner}/{repo}/releases', {
         owner: 'denis0001-dev',
-        repo: 'Anti-Intruder-Protection',
+        repo: 'AIP-Website',
         headers: {
             'X-GitHub-Api-Version': '2022-11-28'
         }
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         releases.appendChild(releaseItem);
         (releaseItem.querySelector(".download") as MdFilledButton).addEventListener("click", async () => {
             try {
-                open(release.downloadUrl);
+                open(release.downloadUrl, "_self");
             } catch (error) {
                 console.error("Error downloading asset:", error);
             }
