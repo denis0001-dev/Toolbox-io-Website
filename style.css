@@ -112,8 +112,7 @@ body > .wrapper {
         transition: opacity 0.5s ease-in-out;
     }
 
-    #home_page {
-        #main {
+    #home_page > #main {
             text-align: center;
             color: white;
             margin-left: 25%;
@@ -176,9 +175,33 @@ body > .wrapper {
                 }
             }
         }
-    }
 
-    #issues {
+    #issues_page > #issues_main {
+        text-align: center;
+        color: white;
+        margin-left: 25%;
+        margin-right: 25%;
+        transition: all 0.5s ease-in-out;
+
+        #issues_header {
+            background-color: #333333;
+            display: flex;
+            border: 3px solid rgb(59 59 59);
+            border-radius: 20px;
+            padding: 10px;
+
+            span.material-symbols-outlined {
+                margin-right: 5px;
+            }
+
+            input#issues_search {
+                border: none !important;
+                background-color: inherit;
+                outline: none !important;
+                font-size: medium;
+                flex-grow: 1;
+            }
+        }
     }
 }
 

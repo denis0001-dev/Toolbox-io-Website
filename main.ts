@@ -178,8 +178,24 @@ function delay(millis: number): Promise<void> {
 }
 
 let currentTabIndex = 0;
+let issuesLoaded = false;
+let octokit: Octokit;
 
-function switchTab(tab: 0 | 1) {
+async function loadIssues() {
+    if (!issuesLoaded) {
+        issuesLoaded = true;
+        const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+            owner: 'denis0001-dev',
+            repo: 'AIP-Website',
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        });
+        console.log(issues);
+    }
+}
+
+async function switchTab(tab: 0 | 1) {
     const tabs = document.getElementById("pages");
     const tabs1 = document.getElementById("tabs");
 
@@ -198,11 +214,13 @@ function switchTab(tab: 0 | 1) {
     tabs.style.left = "-" + tab + "00%";
     currentTabIndex = tab;
     (tabs1?.querySelector(`[data-tabindex="${currentTabIndex}"]`) as HTMLDivElement).classList.add("selected");
-    setTimeout(() => {
-        prevTab.style.height = "0";
-        prevTab.style.overflow = "hidden";
-        currentTab.style.opacity = "1";
-    }, 500);
+    if (tab == 1) {
+        loadIssues();
+    }
+    await delay(500);
+    prevTab.style.height = "0";
+    prevTab.style.overflow = "hidden";
+    currentTab.style.opacity = "1";
 }
 
 async function notification(type: 'error' | 'success', _headline: string, _message: string, durationSec?: number) {
@@ -278,7 +296,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // get releases
     const MyOctokit = Octokit.plugin(restEndpointMethods);
-    const octokit: Octokit = new MyOctokit({
+    octokit = new MyOctokit({
         auth: token
     });
 
