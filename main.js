@@ -220,8 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let videoX = null;
     let videoY = null;
     let videoElement;
-    // @ts-ignore
-    document.getElementById("demo").addEventListener("click", async () => {
+    async function scaleVideo() {
         if (videoListenerActive) {
             const dialog = document.getElementById("video_dialog");
             dialog.classList.add("open");
@@ -252,10 +251,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             video.style.top = `calc(50% - ${rect.height / 2}px)`;
             video.style.transform = document.documentElement.offsetWidth <= 375 ? "scale(1.4)" : "scale(1.5)";
             videoListenerActive = false;
+            video.removeEventListener("click", scaleVideo);
             await delay(500);
             video.controls = true;
         }
-    });
+    }
+    // @ts-ignore
+    document.getElementById("demo").addEventListener("click", scaleVideo);
     // @ts-ignore
     document.getElementById("video_dialog").addEventListener("click", async () => {
         const dialog = document.getElementById("video_dialog");
@@ -277,6 +279,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         video.style.transform = "";
         videoX = null;
         videoY = null;
+        video.addEventListener("click", scaleVideo);
     });
     // get releases
     const MyOctokit = Octokit.plugin(restEndpointMethods);
