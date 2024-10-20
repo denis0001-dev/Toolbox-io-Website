@@ -83,14 +83,15 @@ html, body {
                 color: inherit;
             }
         }
-        .tab:hover {
-            color: #3ec322;
-        }
 
         .tab.selected {
             font-weight: bold;
         }
     }
+}
+
+body.hasHover #tabs .tab:not(.selected):hover {
+    color: #3ec322;
 }
 
 #header.top {
@@ -210,12 +211,19 @@ body > .wrapper {
                 margin-right: 5px;
             }
 
-            input#issues_search {
-                border: none !important;
-                background-color: inherit;
-                outline: none !important;
-                font-size: medium;
+            #issues_search_wrapper {
                 flex-grow: 1;
+                flex-shrink: 1;
+                text-align: start;
+                overflow: hidden;
+
+                input#issues_search {
+                    border: none !important;
+                    background-color: inherit;
+                    outline: none !important;
+                    font-size: medium;
+                    flex-grow: 1;
+                }
             }
         }
 
