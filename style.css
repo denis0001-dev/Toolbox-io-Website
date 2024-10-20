@@ -3,6 +3,11 @@ html, body {
     color-scheme: dark;
     margin: 0;
 }
+
+* {
+    font-family: "Rethink Sans", sans-serif;
+}
+
 #header {
     backdrop-filter: blur(10px) brightness(50%);
     border-radius: 20px;
@@ -11,7 +16,6 @@ html, body {
     position: sticky;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 25px;
     padding: 10px;
     width: fit-content;
     transition: all 1s;
@@ -113,74 +117,76 @@ body > .wrapper {
     }
 
     #home_page > #main {
-            text-align: center;
-            color: white;
-            margin-left: 25%;
-            margin-right: 25%;
-            transition: all 0.5s ease-in-out;
+        text-align: center;
+        color: white;
+        margin-left: 25%;
+        margin-right: 25%;
+        transition: all 0.5s ease-in-out;
+        margin-top: 25px;
 
-            #headline {
-                margin-block-start: 0;
-            }
+        #headline {
+            margin-block-start: 0;
+        }
 
-            ul {
-                text-align: start;
-            }
+        ul {
+            text-align: start;
+        }
 
-            .side {
-                display: flex;
-                text-align: start;
+        .side {
+            display: flex;
+            text-align: start;
 
-                video {
-                    border-radius: 20px;
-                    margin: 10px;
-                }
-            }
-
-            #releases {
-                text-align: start;
-                width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-
-                .release {
-                    display: flex;
-                    align-items: center;
-                    margin-left: auto;
-                    margin-bottom: 5px;
-
-                    .latest_mark {
-                        display: none;
-                    }
-
-                    .space {
-                        flex: 1;
-                    }
-
-                    .download {
-                        margin-left: 20px;
-                    }
-                }
-
-                .release.latest > .latest_mark {
-                    display: block;
-                    color: #0c8104;
-                    border: 1px solid #0c8104;
-                    border-radius: 15px;
-                    padding: 3px 5px;
-                    user-select: none;
-                    margin: 0 10px 0 5px;
-                    height: fit-content;
-                    font-size: 14px;
-                }
+            video {
+                border-radius: 20px;
+                margin: 10px;
             }
         }
+
+        #releases {
+            text-align: start;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+
+            .release {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                margin-bottom: 5px;
+
+                .latest_mark {
+                    display: none;
+                }
+
+                .space {
+                    flex: 1;
+                }
+
+                .download {
+                    margin-left: 20px;
+                }
+            }
+
+            .release.latest > .latest_mark {
+                display: block;
+                color: #0c8104;
+                border: 1px solid #0c8104;
+                border-radius: 15px;
+                padding: 3px 5px;
+                user-select: none;
+                margin: 0 10px 0 5px;
+                height: fit-content;
+                font-size: 14px;
+            }
+        }
+    }
 
     #issues_page > #issues_main {
         text-align: center;
         color: white;
         margin-left: 25%;
         margin-right: 25%;
+        margin-top: 10px;
         transition: all 0.5s ease-in-out;
 
         #issues_header {
@@ -254,6 +260,19 @@ body > .wrapper {
                     height: 1px;
                     background-color: #656565;
                 }
+            }
+
+            .loading {
+                display: none;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .loading:only-child {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
@@ -349,7 +368,7 @@ body > .wrapper {
 }
 
 @media (max-width: 1000px) {
-    #main {
+    #main, #issues_main {
         margin-left: 20px !important;
         margin-right: 10px !important;
     }
@@ -375,14 +394,6 @@ body > .wrapper {
 
 @media (max-width: 440px) {
     #header {
-        /* margin-top: 0;
-        margin-left: 0;
-        margin-right: 0;
-        border-radius: 0;
-        padding-left: 10px;
-        width: 100%;
-        top: 0; */
-
         .title {
             visibility: hidden;
             width: 0;
@@ -405,5 +416,9 @@ body > .wrapper {
         padding-left: 10px;
         width: 100%;
         top: 0;
+    }
+
+    #issues_main {
+        margin-top: 0;
     }
 }

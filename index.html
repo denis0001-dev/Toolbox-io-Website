@@ -8,6 +8,9 @@
 
         <link rel="stylesheet" href="style.css" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
         <link rel="icon" href="ic_launcher.webp" />
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -79,49 +82,7 @@
                             This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
                             You can download this app below:
                         </p>
-                        <div id="releases">
-                            <!--
-                            <div class="release latest">
-                                <div class="version">1.0</div>
-                                <div class="latest_mark">Latest</div>
-                                <div class="space"></div>
-                                <a href="" class="download">
-                                    <md-filled-button>
-                                        Download
-                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                                        </svg>
-                                    </md-filled-button>
-                                </a>
-                            </div>
-                            <div class="release">
-                                <div class="version">1.1</div>
-                                <div class="latest_mark">Latest</div>
-                                <div class="space"></div>
-                                <a href="" class="download">
-                                    <md-filled-button>
-                                        Download
-                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                                        </svg>
-                                    </md-filled-button>
-                                </a>
-                            </div>
-                            <div class="release">
-                                <div class="version">1.2.1</div>
-                                <div class="latest_mark">Latest</div>
-                                <div class="space"></div>
-                                <a href="" class="download">
-                                    <md-filled-button>
-                                        Download
-                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                                        </svg>
-                                    </md-filled-button>
-                                </a>
-                            </div>
-                            -->
-                        </div>
+                        <div id="releases"></div>
                     </div>
                 </div>
                 <div id="issues_page" data-tabindex="1">
@@ -131,7 +92,12 @@
                             <label for="issues_search"></label>
                             <input type="text" id="issues_search" placeholder="Search for issues" />
                         </div>
-                        <div id="issues_list"></div>
+                        <div id="issues_list">
+                            <div class="loading">
+                                <md-circular-progress indeterminate></md-circular-progress>
+                                <p>Loading issues...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
