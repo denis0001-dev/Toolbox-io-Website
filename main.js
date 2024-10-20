@@ -222,37 +222,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     let videoElement;
     // @ts-ignore
     document.getElementById("demo").addEventListener("click", async () => {
-        const dialog = document.getElementById("video_dialog");
-        dialog.classList.add("open");
-        const video = document.getElementById("demo");
-        const rect = video.getBoundingClientRect();
-        let x = rect.x;
-        const y = rect.y - 10;
-        if (document.documentElement.offsetWidth > 500)
-            x -= 10;
-        video.style.position = "fixed";
-        video.style.left = `${x}px`;
-        video.style.top = `${y}px`;
-        videoX = x;
-        videoY = y;
-        video.style.transitionProperty = "left, top, transform";
-        video.style.transitionDuration = "0.5s";
-        video.style.transitionTimingFunction = "ease-out";
-        video.style.zIndex = "1001";
-        videoElement = document.createElement("video");
-        videoElement.style.width = rect.width + "px";
-        videoElement.style.height = rect.height + "px";
-        videoElement.style.margin = "10px";
-        videoElement.style.marginBottom = "0px";
-        videoElement.style.flexShrink = "0";
-        video.insertAdjacentElement("beforebegin", videoElement);
-        await delay(1);
-        video.style.left = `calc(50% - ${rect.width / 2}px)`;
-        video.style.top = `calc(50% - ${rect.height / 2}px)`;
-        video.style.transform = document.documentElement.offsetWidth <= 375 ? "scale(1.4)" : "scale(1.5)";
-        videoListenerActive = false;
-        await delay(500);
-        video.controls = true;
+        if (videoListenerActive) {
+            const dialog = document.getElementById("video_dialog");
+            dialog.classList.add("open");
+            const video = document.getElementById("demo");
+            const rect = video.getBoundingClientRect();
+            let x = rect.x;
+            const y = rect.y - 10;
+            if (document.documentElement.offsetWidth > 500)
+                x -= 10;
+            video.style.position = "fixed";
+            video.style.left = `${x}px`;
+            video.style.top = `${y}px`;
+            videoX = x;
+            videoY = y;
+            video.style.transitionProperty = "left, top, transform";
+            video.style.transitionDuration = "0.5s";
+            video.style.transitionTimingFunction = "ease-out";
+            video.style.zIndex = "1001";
+            videoElement = document.createElement("video");
+            videoElement.style.width = rect.width + "px";
+            videoElement.style.height = rect.height + "px";
+            videoElement.style.margin = "10px";
+            videoElement.style.marginBottom = "0px";
+            videoElement.style.flexShrink = "0";
+            video.insertAdjacentElement("beforebegin", videoElement);
+            await delay(1);
+            video.style.left = `calc(50% - ${rect.width / 2}px)`;
+            video.style.top = `calc(50% - ${rect.height / 2}px)`;
+            video.style.transform = document.documentElement.offsetWidth <= 375 ? "scale(1.4)" : "scale(1.5)";
+            videoListenerActive = false;
+            await delay(500);
+            video.controls = true;
+        }
     });
     // @ts-ignore
     document.getElementById("video_dialog").addEventListener("click", async () => {
