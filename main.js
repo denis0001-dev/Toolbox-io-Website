@@ -85,6 +85,19 @@ function delay(millis) {
 let currentTabIndex = 0;
 let issuesLoaded = false;
 let octokit;
+async function loadIssues() {
+    if (!issuesLoaded) {
+        issuesLoaded = true;
+        const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+            owner: 'denis0001-dev',
+            repo: 'AIP-Website',
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        });
+        console.log(issues);
+    }
+}
 async function switchTab(tab) {
     const tabs = document.getElementById("pages");
     const tabs1 = document.getElementById("tabs");
@@ -102,17 +115,7 @@ async function switchTab(tab) {
     currentTabIndex = tab;
     (tabs1 === null || tabs1 === void 0 ? void 0 : tabs1.querySelector(`[data-tabindex="${currentTabIndex}"]`)).classList.add("selected");
     if (tab == 1) {
-        if (!issuesLoaded) {
-            issuesLoaded = true;
-            const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
-                owner: 'denis0001-dev',
-                repo: 'AIP-Website',
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            });
-            console.log(issues);
-        }
+        loadIssues();
     }
     await delay(500);
     prevTab.style.height = "0";
