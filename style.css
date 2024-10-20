@@ -216,13 +216,14 @@ body > .wrapper {
                 flex-shrink: 1;
                 text-align: start;
                 overflow: hidden;
+                position: relative;
 
                 input#issues_search {
                     border: none !important;
                     background-color: inherit;
                     outline: none !important;
                     font-size: medium;
-                    flex-grow: 1;
+                    width: 100%;
                 }
             }
         }
