@@ -92,109 +92,205 @@ html, body {
 #header.top {
     backdrop-filter: none;
     border-radius: 0;
-    /* flex-direction: column;
-
-    .icon {
-        width: 192px;
-        height: 192px;
-    }
-
-    .separator {
-        display: none;
-    }
-
-    .title {
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-
-    #tabs {
-        .tab {
-            font-size: 20px;
-        }
-    } */
+}
+body > .wrapper {
+    overflow-x: hidden;
+    position: relative;
 }
 
-#main {
-    text-align: center;
-    color: white;
-    margin-left: 25%;
-    margin-right: 25%;
-    transition: all 0.5s ease-in-out;
+#pages {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    display: flex;
+    transition: left 0.5s ease-in-out;
 
-    #headline {
-        margin-block-start: 0;
+    > div {
+        width: 100%;
+        flex-shrink: 0;
+        position: relative;
+        transition: opacity 0.5s ease-in-out;
     }
 
-    ul {
-        text-align: start;
-    }
+    #home_page {
+        #main {
+            text-align: center;
+            color: white;
+            margin-left: 25%;
+            margin-right: 25%;
+            transition: all 0.5s ease-in-out;
 
-    .side {
-        display: flex;
-        text-align: start;
+            #headline {
+                margin-block-start: 0;
+            }
 
-        video {
-            border-radius: 20px;
-            margin: 10px;
+            ul {
+                text-align: start;
+            }
+
+            .side {
+                display: flex;
+                text-align: start;
+
+                video {
+                    border-radius: 20px;
+                    margin: 10px;
+                }
+            }
+
+            #releases {
+                text-align: start;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+
+                .release {
+                    display: flex;
+                    align-items: center;
+                    margin-left: auto;
+                    margin-bottom: 5px;
+
+                    .latest_mark {
+                        display: none;
+                    }
+
+                    .space {
+                        flex: 1;
+                    }
+
+                    .download {
+                        margin-left: 20px;
+                    }
+                }
+
+                .release.latest > .latest_mark {
+                    display: block;
+                    color: #0c8104;
+                    border: 1px solid #0c8104;
+                    border-radius: 15px;
+                    padding: 3px 5px;
+                    user-select: none;
+                    margin: 0 10px 0 5px;
+                    height: fit-content;
+                    font-size: 14px;
+                }
+            }
         }
     }
 
-    #releases {
-        text-align: start;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
+    #issues {
+    }
+}
 
-        .release {
+#status_wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+}
+
+#status {
+    position: relative;
+    border-radius: 20px;
+    padding: 5px 5px 10px 10px;
+    transition: right 0.25s ease-in-out;
+    right: 0;
+
+    .head {
+        display: flex;
+        align-items: center;
+    }
+
+    p.message {
+        margin-block: 0;
+        margin: 10px 5px 0 0;
+    }
+
+    span.material-symbols-outlined {
+        display: none;
+        margin-right: 5px;
+        user-select: none;
+    }
+
+    .space {
+        flex-grow: 1;
+        min-width: 20px;
+    }
+
+    md-icon-button.close {
+        display: block;
+        --md-icon-button-icon-color: white;
+        --md-icon-button-hover-icon-color: white;
+        --md-icon-button-pressed-icon-color: white;
+        --md-icon-button-focus-icon-color: white;
+
+        div {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
-            margin-left: auto;
-            margin-bottom: 5px;
-
-            .latest_mark {
-                display: none;
-            }
-
-            .space {
-                flex: 1;
-            }
-
-            .download {
-                margin-left: 20px;
-            }
+            justify-content: center;
         }
+    }
 
-        .release.latest > .latest_mark {
-            display: block;
-            color: #0c8104;
-            border: 1px solid #0c8104;
-            border-radius: 15px;
-            padding: 3px 5px;
-            user-select: none;
-            margin: 0 10px 0 5px;
-            height: fit-content;
-            font-size: 14px;
+    .progress {
+        width: calc(100% - 5px);
+        height: 5px;
+        position: relative;
+        margin-top: 5px;
+
+        .progress_bar {
+            transition-property: width;
+            transition-timing-function: linear;
+            width: 0;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
         }
+    }
+}
+
+#status.hidden {
+    right: calc(-100% - 10px);
+}
+
+#status.success {
+    background-color: rgb(39, 193, 31);
+
+    .head > span.material-symbols-outlined.success {
+        display: block;
+    }
+}
+
+#status.error {
+    background-color: rgb(217, 36, 36);
+
+    .head > span.material-symbols-outlined.error {
+        display: block;
     }
 }
 
 @media (max-width: 1000px) {
     #main {
-        margin-left: 20px;
-        margin-right: 10px;
+        margin-left: 20px !important;
+        margin-right: 10px !important;
     }
 }
 
 @media (max-width: 500px) {
+    body > .wrapper {
+        overflow-x: hidden;
+    }
+
     #main {
         .side {
             text-align: center;
             flex-direction: column;
 
             video {
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
         }
     }
@@ -228,7 +324,7 @@ html, body {
         margin-top: 0;
         margin-left: 0;
         margin-right: 0;
-        border-radius: 0;
+        border-radius: 0 0 20px 20px;
         padding-left: 10px;
         width: 100%;
         top: 0;

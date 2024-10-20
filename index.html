@@ -30,6 +30,7 @@
         <!--suppress ES6ConvertVarToLetConst, JSUnusedGlobalSymbols -->
         <script>var exports = {};</script>
         <script type="module" src="main.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     </head>
     <body>
         <div id="header" class="top">
@@ -37,90 +38,117 @@
             <div class="title">AIP++</div>
             <div class="separator"></div>
             <div id="tabs">
-                <div class="tab selected" id="home">Home</div>
+                <div class="tab selected" id="home" data-tabindex="0">Home</div>
                 <div class="tab" id="download">Download</div>
-                <div class="tab" id="issues">Issues</div>
+                <div class="tab" id="issues" data-tabindex="1">Issues</div>
                 <div class="tab" id="help">Help</div>
             </div>
         </div>
-        <div id="main">
-            <h1 id="headline">The best security for your device</h1>
-            <p>
-                AIP++ (Anti-Intruder Protection++) is a program designed to protect your device from physical intruders.
-                It blocks access to applications that may pose a security threat.
-            </p>
-            <h2>How it works</h2>
-            <div class="side">
-                <div>
-                    <ul>
-                        <li>
-                            When you try to launch an application protected by AIP++, the device displays an "error" message.
-                            In fact, there is no error, this is necessary to confuse the attacker.
-                        </li>
-                        <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
-                        <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
-                    </ul>
-                    <p>
-                        AIP++ can be an effective tool for protecting personal data and confidential information from unauthorized access.
-                        However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
-                    </p>
+        <div class="wrapper">
+            <div id="pages" style="left: 0;">
+                <div id="home_page" data-tabindex="0">
+                    <div id="main">
+                        <h1 id="headline">The best security for your device</h1>
+                        <p>
+                            AIP++ (Anti-Intruder Protection++) is a program designed to protect your device from physical intruders.
+                            It blocks access to applications that may pose a security threat.
+                        </p>
+                        <h2>How it works</h2>
+                        <div class="side">
+                            <div>
+                                <ul>
+                                    <li>
+                                        When you try to launch an application protected by AIP++, the device displays an "error" message.
+                                        In fact, there is no error, this is necessary to confuse the attacker.
+                                    </li>
+                                    <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
+                                    <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
+                                </ul>
+                                <p>
+                                    AIP++ can be an effective tool for protecting personal data and confidential information from unauthorized access.
+                                    However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
+                                </p>
+                            </div>
+                            <video autoplay muted loop height="480" width="216">
+                                <source src="demo.webm" type="video/webm" />
+                            </video>
+                        </div>
+                        <h2>Try this app</h2>
+                        <p>
+                            AIP++ is available for Android.
+                            This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
+                            You can download this app below:
+                        </p>
+                        <div id="releases">
+                            <!--
+                            <div class="release latest">
+                                <div class="version">1.0</div>
+                                <div class="latest_mark">Latest</div>
+                                <div class="space"></div>
+                                <a href="" class="download">
+                                    <md-filled-button>
+                                        Download
+                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                                        </svg>
+                                    </md-filled-button>
+                                </a>
+                            </div>
+                            <div class="release">
+                                <div class="version">1.1</div>
+                                <div class="latest_mark">Latest</div>
+                                <div class="space"></div>
+                                <a href="" class="download">
+                                    <md-filled-button>
+                                        Download
+                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                                        </svg>
+                                    </md-filled-button>
+                                </a>
+                            </div>
+                            <div class="release">
+                                <div class="version">1.2.1</div>
+                                <div class="latest_mark">Latest</div>
+                                <div class="space"></div>
+                                <a href="" class="download">
+                                    <md-filled-button>
+                                        Download
+                                        <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                                            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                                        </svg>
+                                    </md-filled-button>
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
                 </div>
-                <video autoplay muted loop height="480" width="216">
-                    <source src="demo.webm" type="video/webm" />
-                </video>
-            </div>
-            <h2>Try this app</h2>
-            <p>
-                AIP++ is available for Android.
-                This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
-                You can download this app below:
-            </p>
-            <div id="releases">
-                <!--
-                <div class="release latest">
-                    <div class="version">1.0</div>
-                    <div class="latest_mark">Latest</div>
-                    <div class="space"></div>
-                    <a href="" class="download">
-                        <md-filled-button>
-                            Download
-                            <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                            </svg>
-                        </md-filled-button>
-                    </a>
+                <div id="issues_page" data-tabindex="1">
+                    <div id="issues_main">
+                        Issues will be implemented later
+                    </div>
                 </div>
-                <div class="release">
-                    <div class="version">1.1</div>
-                    <div class="latest_mark">Latest</div>
-                    <div class="space"></div>
-                    <a href="" class="download">
-                        <md-filled-button>
-                            Download
-                            <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                            </svg>
-                        </md-filled-button>
-                    </a>
-                </div>
-                <div class="release">
-                    <div class="version">1.2.1</div>
-                    <div class="latest_mark">Latest</div>
-                    <div class="space"></div>
-                    <a href="" class="download">
-                        <md-filled-button>
-                            Download
-                            <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                            </svg>
-                        </md-filled-button>
-                    </a>
-                </div>
-                -->
             </div>
         </div>
-        <div id="status">
-
+        <div id="status_wrapper">
+            <div id="status" class="hidden">
+                <div class="head">
+                    <span class="material-symbols-outlined success">check</span>
+                    <span class="material-symbols-outlined error">error</span>
+                    <strong class="message_headline"></strong>
+                    <div class="space"></div>
+                    <md-icon-button class="close">
+                        <div>
+                            <md-icon>close</md-icon>
+                        </div>
+                    </md-icon-button>
+                </div>
+                <p class="message"></p>
+                <div class="progress">
+                    <div class="progress_bar" style="width: 0;"></div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

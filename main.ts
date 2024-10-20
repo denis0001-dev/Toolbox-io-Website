@@ -1,4 +1,4 @@
-import {MdFilledButton} from "@material/web/all.js";
+import {MdFilledButton, MdIconButton} from "@material/web/all.js";
 import {Octokit} from "@octokit/rest/";
 import {OctokitResponse} from "@octokit/types/";
 import {restEndpointMethods} from "@octokit/plugin-rest-endpoint-methods/";
@@ -173,22 +173,108 @@ function doScrolling(element: string, duration: number): void {
     })
 }
 
+function delay(millis: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, millis));
+}
+
+let currentTabIndex = 0;
+
+function switchTab(tab: 0 | 1) {
+    const tabs = document.getElementById("pages");
+    const tabs1 = document.getElementById("tabs");
+
+    const currentTab = tabs?.querySelector(`[data-tabindex="${tab}"]`) as HTMLDivElement;
+    const prevTab = tabs?.querySelector(`[data-tabindex="${currentTabIndex}"]`) as HTMLDivElement;
+    currentTab.style.height = "";
+    currentTab.style.overflow = "";
+
+    (tabs1?.querySelector(`[data-tabindex="${currentTabIndex}"]`) as HTMLDivElement).classList.remove("selected");
+
+    if (scrollY != 0) {
+        currentTab.style.opacity = "0";
+        currentTab.style.transition = "opacity 0.5s ease-in-out";
+    }
+    // @ts-ignore
+    tabs.style.left = "-" + tab + "00%";
+    currentTabIndex = tab;
+    (tabs1?.querySelector(`[data-tabindex="${currentTabIndex}"]`) as HTMLDivElement).classList.add("selected");
+    setTimeout(() => {
+        prevTab.style.height = "0";
+        prevTab.style.overflow = "hidden";
+        currentTab.style.opacity = "1";
+    }, 500);
+}
+
+async function notification(type: 'error' | 'success', _headline: string, _message: string, durationSec?: number) {
+    const status: HTMLDivElement = document.getElementById("status") as HTMLDivElement;
+    const progress = status.querySelector(".progress > .progress_bar") as HTMLDivElement;
+    const headline = status.querySelector(".head > .message_headline") as HTMLElement;
+    const message = status.querySelector(".message") as HTMLParagraphElement;
+    const close = status.querySelector(".head > .close") as MdIconButton;
+
+    status.classList.remove("hidden", "success", "error");
+    status.classList.add(type);
+    headline.textContent = _headline;
+    message.textContent = _message;
+
+    progress.style.transitionDuration = `${durationSec || 5}s`;
+    progress.style.width = "100%";
+
+    close.addEventListener("click", hide);
+
+    async function hide() {
+        status.classList.add("hidden");
+        progress.style.width = "0";
+        progress.style.transitionDuration = "";
+        await delay(250);
+        status.classList.remove(type);
+        headline.textContent = "";
+        message.textContent = "";
+    }
+
+    await delay((durationSec || 5) * 1000);
+    await hide();
+}
+
+(window as any).notify = notification;
+
 document.addEventListener("DOMContentLoaded", async () => {
+    Array.from((document.getElementById("pages") as HTMLDivElement).children).forEach((tab, index: number) => {
+        if (index != currentTabIndex) {
+            (tab as HTMLDivElement).style.height = "0";
+            (tab as HTMLDivElement).style.overflow = "hidden";
+        }
+    });
+
     $(window).on('scroll', function() {
         // @ts-ignore
         if ($(this).scrollTop() + $(this).height() >= $('#headline').position().top && scrollY !== 0) {
             $('#header').removeClass("top");
         }
         // @ts-ignore
-        else /* if ($('#line-before-related-article').position().top >= $(this).scrollTop()) */ {
+        else {
             $('#header').addClass("top");
         }
     })
 
     // @ts-ignore
-    document.getElementById("download").addEventListener("click", doScrolling.bind(null, '#releases', 1000))
+    document.getElementById("download").addEventListener("click", () => {
+        // @ts-ignore
+        if (!document.getElementById("home").classList.contains("selected")) {
+            switchTab(0);
+        }
+        doScrolling('#releases', 1000);
+    });
     // @ts-ignore
-    document.getElementById("home").addEventListener("click", doScrolling.bind(null, 'body', 1000))
+    document.getElementById("home").addEventListener("click", () => {
+        // @ts-ignore
+        if (!document.getElementById("home").classList.contains("selected")) {
+            switchTab(0);
+        }
+        doScrolling('body', 1000);
+    });
+    // @ts-ignore
+    document.getElementById("issues").addEventListener("click", () => {switchTab(1)})
 
     // get releases
     const MyOctokit = Octokit.plugin(restEndpointMethods);
@@ -235,4 +321,4 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         })
     })
-})
+});
