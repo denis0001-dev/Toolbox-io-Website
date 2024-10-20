@@ -72,9 +72,12 @@
                                     However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
                                 </p>
                             </div>
-                            <video autoplay muted loop height="480" width="216">
-                                <source src="demo.webm" type="video/webm" />
-                            </video>
+                            <div id="video_container">
+                                <video autoplay muted loop height="480" width="216" id="demo">
+                                    <source src="demo.webm" type="video/webm" />
+                                </video>
+                                <div class="tip">Click to zoom</div>
+                            </div>
                         </div>
                         <h2>Try this app</h2>
                         <p>
@@ -121,5 +124,6 @@
                 </div>
             </div>
         </div>
+        <div id="video_dialog"></div>
     </body>
 </html>

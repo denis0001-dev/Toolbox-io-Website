@@ -20,7 +20,7 @@ html, body {
     width: fit-content;
     transition: all 1s;
     top: 10px;
-    z-index: 1000;
+    z-index: 100;
     user-select: none;
     box-sizing: border-box;
 
@@ -136,9 +136,19 @@ body > .wrapper {
             display: flex;
             text-align: start;
 
-            video {
-                border-radius: 20px;
-                margin: 10px;
+            div#video_container {
+                display: flex;
+                flex-direction: column;
+
+                video {
+                    border-radius: 20px;
+                    margin: 10px 10px 0;
+                }
+
+                .tip {
+                    color: #7e7e7e;
+                    margin-left: 10px;
+                }
             }
         }
 
@@ -367,6 +377,26 @@ body > .wrapper {
     }
 }
 
+#video_dialog {
+    backdrop-filter: blur(10px) brightness(70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+#video_dialog.open {
+    opacity: 1;
+    height: 100vh;
+}
+
 @media (max-width: 1000px) {
     #main, #issues_main {
         margin-left: 20px !important;
@@ -384,9 +414,16 @@ body > .wrapper {
             text-align: center;
             flex-direction: column;
 
-            video {
-                margin-left: auto !important;
-                margin-right: auto !important;
+            div#video_container {
+                video {
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
+
+                .tip {
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
             }
         }
     }
