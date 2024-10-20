@@ -202,6 +202,60 @@ body > .wrapper {
                 flex-grow: 1;
             }
         }
+
+        #issues_list {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+
+            .issue {
+                position: relative;
+                text-align: start;
+
+                .body {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+
+                    div:has(.number) {
+                        font-size: 20px;
+                    }
+
+                    .label {
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        user-select: none;
+                        --issue-label-color: rgba(0, 0, 0, 0);
+                        display: none;
+                        border: 1px solid var(--issue-label-color);
+                        border-radius: 13px;
+                        color: var(--issue-label-color);
+                        padding: 3px 5px;
+                        font-size: small;
+                    }
+
+                    strong.title {
+                        font-size: larger;
+                    }
+
+                    .description {
+                        color: #939393;
+                        margin-left: 10px;
+                    }
+                }
+
+                md-ripple {
+                    --md-ripple-hover-color: rgb(151, 151, 151);
+                    --md-ripple-pressed-color: rgb(151, 151, 151);
+                }
+
+                .separator {
+                    width: 100%;
+                    height: 1px;
+                    background-color: #656565;
+                }
+            }
+        }
     }
 }
 

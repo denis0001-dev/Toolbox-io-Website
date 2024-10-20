@@ -12,13 +12,13 @@ function parseDate(date) {
         m.forEach((match, groupIndex) => {
             switch (groupIndex) {
                 case 1:
-                    day = Number(match);
+                    year = Number(match);
                     break;
                 case 2:
                     month = Number(match);
                     break;
                 case 3:
-                    year = Number(match);
+                    day = Number(match);
                     break;
             }
         });
@@ -85,6 +85,51 @@ function delay(millis) {
 let currentTabIndex = 0;
 let issuesLoaded = false;
 let octokit;
+function parseIssueData(data) {
+    let issues = [];
+    data.data.forEach(issue => {
+        issues.push({
+            number: issue.number,
+            title: issue.title,
+            description: issue.body || "",
+            label: {
+                name: issue.labels[0].name,
+                color: issue.labels[0].color
+            }
+        });
+    });
+    return issues;
+}
+async function loadIssues() {
+    if (!issuesLoaded) {
+        issuesLoaded = true;
+        const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+            owner: 'denis0001-dev',
+            repo: 'AIP-Website',
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        });
+        console.log(issues);
+        const parsedIssues = parseIssueData(issues);
+        console.log(parsedIssues);
+        parsedIssues.forEach(issue => {
+            const element = document.createElement('div');
+            element.className = "issue";
+            element.innerHTML = `
+            <div class="body">
+                <div>#<span class="number">${issue.number}</span></div>
+                <div class="label" style="--issue-label-color: #${issue.label.color}; display: block;">${issue.label.name}</div>
+                <strong class="title">${issue.title}</strong>
+                <div class="description">${issue.description}</div>
+            </div>
+            <md-ripple></md-ripple>
+            <div class="separator"></div>
+            `;
+            document.getElementById("issues_list").appendChild(element);
+        });
+    }
+}
 async function switchTab(tab) {
     const tabs = document.getElementById("pages");
     const tabs1 = document.getElementById("tabs");
@@ -102,17 +147,8 @@ async function switchTab(tab) {
     currentTabIndex = tab;
     (tabs1 === null || tabs1 === void 0 ? void 0 : tabs1.querySelector(`[data-tabindex="${currentTabIndex}"]`)).classList.add("selected");
     if (tab == 1) {
-        if (!issuesLoaded) {
-            issuesLoaded = true;
-            const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
-                owner: 'denis0001-dev',
-                repo: 'AIP-Website',
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            });
-            console.log(issues);
-        }
+        // noinspection ES6MissingAwait
+        loadIssues();
     }
     await delay(500);
     prevTab.style.height = "0";

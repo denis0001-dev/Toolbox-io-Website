@@ -10,7 +10,9 @@ import {restEndpointMethods} from "@octokit/plugin-rest-endpoint-methods/";
 type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>> */
 
 type DateO = { day: number, month: number, year: number }
+
 type Release = { version: string, downloadUrl: string, date: DateO, latest: boolean, id: number}
+type Issue = {number: number, title: string, description: string, label: {name: string, color: string}}
 
 type User = {
     name?: string | null | undefined;
@@ -84,6 +86,48 @@ type ReleasesResponse = OctokitResponse<{
         rocket: number;
     } | undefined;
 }[], 200>;
+type IssuesResponse = OctokitResponse<Array<{
+    id: number;
+    node_id: string;
+    url: string;
+    repository_url: string;
+    labels_url: string;
+    comments_url: string;
+    events_url: string;
+    html_url: string;
+    number: number;
+    state: string;
+    state_reason?: "completed" | "reopened" | "not_planned" | null;
+    title: string;
+    body?: string | null;
+    user: any;
+    labels: any;
+    assignee: any;
+    assignees?: any;
+    milestone: any;
+    locked: boolean;
+    active_lock_reason?: string | null;
+    comments: number;
+    pull_request?: {
+        merged_at?: string | null;
+        diff_url: string | null;
+        html_url: string | null;
+        patch_url: string | null;
+        url: string | null
+    };
+    closed_at: string | null;
+    created_at: string;
+    updated_at: string;
+    draft?: boolean;
+    closed_by?: any;
+    body_html?: string;
+    body_text?: string;
+    timeline_url?: string;
+    repository?: any;
+    performed_via_github_app?: any;
+    author_association: any;
+    reactions?: any
+}>, 200>
 
 const token: string = 'gi' + 'th' + 'ub_p' + 'at_11BESRTYY' + '0e5lNGcsHV9Up_7HTMBq6ZkfKYXou7bkc' + 'mZVX6nMJ0ua9I' + 'sqqcsPGmuHHYCZ' + 'J4BDL4f0SSrM0'
 
@@ -99,13 +143,13 @@ function parseDate(date: string): DateO | null {
         m.forEach((match, groupIndex) => {
             switch (groupIndex) {
                 case 1:
-                    day = Number(match);
+                    year = Number(match);
                     break
                 case 2:
                     month = Number(match);
                     break
                 case 3:
-                    year = Number(match);
+                    day = Number(match);
                     break
             }
         });
@@ -181,6 +225,26 @@ let currentTabIndex = 0;
 let issuesLoaded = false;
 let octokit: Octokit;
 
+function parseIssueData(data: IssuesResponse): Issue[] {
+    let issues: Issue[] = []
+
+    data.data.forEach(issue => {
+        issues.push(
+            {
+                number: issue.number,
+                title: issue.title,
+                description: issue.body || "",
+                label: {
+                    name: issue.labels[0].name,
+                    color: issue.labels[0].color
+                }
+            }
+        );
+    });
+
+    return issues;
+}
+
 async function loadIssues() {
     if (!issuesLoaded) {
         issuesLoaded = true;
@@ -192,6 +256,23 @@ async function loadIssues() {
             }
         });
         console.log(issues);
+        const parsedIssues = parseIssueData(issues);
+        console.log(parsedIssues);
+        parsedIssues.forEach(issue => {
+            const element = document.createElement('div');
+            element.className = "issue";
+            element.innerHTML = `
+            <div class="body">
+                <div>#<span class="number">${issue.number}</span></div>
+                <div class="label" style="--issue-label-color: #${issue.label.color}; display: block;">${issue.label.name}</div>
+                <strong class="title">${issue.title}</strong>
+                <div class="description">${issue.description}</div>
+            </div>
+            <md-ripple></md-ripple>
+            <div class="separator"></div>
+            `;
+            (document.getElementById("issues_list") as HTMLDivElement).appendChild(element);
+        });
     }
 }
 
@@ -215,6 +296,7 @@ async function switchTab(tab: 0 | 1) {
     currentTabIndex = tab;
     (tabs1?.querySelector(`[data-tabindex="${currentTabIndex}"]`) as HTMLDivElement).classList.add("selected");
     if (tab == 1) {
+        // noinspection ES6MissingAwait
         loadIssues();
     }
     await delay(500);
