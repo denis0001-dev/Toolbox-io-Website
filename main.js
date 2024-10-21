@@ -281,34 +281,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         videoY = null;
         video.addEventListener("click", scaleVideo);
     });
-    function watchForHover() {
-        var hasHoverClass = false;
-        var container = document.body;
-        var lastTouchTime = 0;
-        function enableHover() {
-            // filter emulated events coming from touch events
-            if (new Date() - lastTouchTime < 500)
-                return;
-            if (hasHoverClass)
-                return;
-            container.className += ' hasHover';
-            hasHoverClass = true;
-        }
-        function disableHover() {
-            if (!hasHoverClass)
-                return;
-            container.className = container.className.replace(' hasHover', '');
-            hasHoverClass = false;
-        }
-        function updateLastTouchTime() {
-            lastTouchTime = new Date();
-        }
-        document.addEventListener('touchstart', updateLastTouchTime, true);
-        document.addEventListener('touchstart', disableHover, true);
-        document.addEventListener('mousemove', enableHover, true);
-        enableHover();
+    // hover fix
+    let hasHoverClass = false;
+    const container = document.body;
+    let lastTouchTime = 0;
+    function enableHover() {
+        // filter emulated events coming from touch events
+        // @ts-ignore
+        if (new Date() - lastTouchTime < 500)
+            return;
+        if (hasHoverClass)
+            return;
+        container.className += ' hasHover';
+        hasHoverClass = true;
     }
-    watchForHover();
+    function disableHover() {
+        if (!hasHoverClass)
+            return;
+        container.className = container.className.replace(' hasHover', '');
+        hasHoverClass = false;
+    }
+    function updateLastTouchTime() {
+        // @ts-ignore
+        lastTouchTime = new Date();
+    }
+    document.addEventListener('touchstart', updateLastTouchTime, true);
+    document.addEventListener('touchstart', disableHover, true);
+    document.addEventListener('mousemove', enableHover, true);
+    enableHover();
     // get releases
     const MyOctokit = Octokit.plugin(restEndpointMethods);
     octokit = new MyOctokit({
@@ -351,5 +351,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.error("Error downloading asset:", error);
             }
         });
+        if (release.latest) {
+            const element = document.createElement("div");
+            element.classList.add("separator");
+            releases.appendChild(element);
+        }
     });
 });

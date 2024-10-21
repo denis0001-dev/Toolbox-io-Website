@@ -189,6 +189,14 @@ body > .wrapper {
                 height: fit-content;
                 font-size: 14px;
             }
+
+            .separator {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                height: 2px;
+                border-radius: 3px;
+                background-color: #3d3d3d;
+            }
         }
     }
 
