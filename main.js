@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!document.getElementById("home").classList.contains("selected")) {
             switchTab(0);
         }
-        doScrolling('#releases', 1000);
+        doScrolling('#download_h', 1000);
     });
     // @ts-ignore
     document.getElementById("home").addEventListener("click", () => {
@@ -216,6 +216,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     // @ts-ignore
     document.getElementById("issues").addEventListener("click", () => { switchTab(1); });
+    // @ts-ignore
+    document.getElementById("help").addEventListener("click", () => {
+        // @ts-ignore
+        if (!document.getElementById("home").classList.contains("selected")) {
+            switchTab(0);
+        }
+        doScrolling("#help_h", 1000);
+    });
+    // @ts-ignore
+    document.getElementById("issues_btn").addEventListener("click", () => { switchTab(1); });
     let videoListenerActive = true;
     let videoX = null;
     let videoY = null;

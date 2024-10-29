@@ -77,6 +77,7 @@ html, body {
             cursor: pointer;
             transition: color 0.3s ease;
             font-size: 18px;
+            position: relative;
 
             a {
                 text-decoration: none;
@@ -137,6 +138,12 @@ body > .wrapper {
             display: flex;
             text-align: start;
 
+            div.text {
+                h1, h2, h3, h4, h5, h6 {
+                    text-align: center;
+                }
+            }
+
             div#video_container {
                 display: flex;
                 flex-direction: column;
@@ -151,6 +158,27 @@ body > .wrapper {
                     margin-left: 10px;
                 }
             }
+        }
+
+        .center {
+            display: flex;
+            flex-direction: column;
+
+            * {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .h {
+            position: absolute;
+            width: 0;
+            height: 94px;
+            top: -94px;
+        }
+
+        .h1 {
+            position: relative;
         }
 
         #releases {

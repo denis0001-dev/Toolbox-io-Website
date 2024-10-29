@@ -41,7 +41,9 @@
             <div class="title">AIP++</div>
             <div class="separator"></div>
             <div id="tabs">
-                <div class="tab selected" id="home" data-tabindex="0">Home</div>
+                <div class="tab selected" id="home" data-tabindex="0">
+                    Home
+                </div>
                 <div class="tab" id="download">Download</div>
                 <div class="tab" id="issues" data-tabindex="1">Issues</div>
                 <div class="tab" id="help">Help</div>
@@ -56,9 +58,10 @@
                             AIP++ (Anti-Intruder Protection++) is a program designed to protect your device from physical intruders.
                             It blocks access to applications that may pose a security threat.
                         </p>
-                        <h2>How it works</h2>
+                        <h2>Features</h2>
                         <div class="side">
-                            <div>
+                            <div class="text">
+                                <h3>App Locker</h3>
                                 <ul>
                                     <li>
                                         When you try to launch an application protected by AIP++, the device displays an "error" message.
@@ -67,10 +70,34 @@
                                     <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
                                     <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
                                 </ul>
-                                <p>
-                                    AIP++ can be an effective tool for protecting personal data and confidential information from unauthorized access.
-                                    However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
-                                </p>
+                                <h3>Unlock Protection</h3>
+                                <ul>
+                                    <li>
+                                        If someone tries to unlock your device, but fails multiple times, the following actions can be taken:
+                                        <h4>Alarm</h4>
+                                        <ul>
+                                            <li>
+                                                The device will play an alarm sound (you can change it if you want) at 100% volume.
+                                                Any attempts to change it will be prevented.
+                                            </li>
+                                        </ul>
+                                        <h4>Intruder photo</h4>
+                                        <ul>
+                                            <li>The device will take a photo from the front and back cameras.</li>
+                                            <li>You can configure the camera from which the photos will be taken.</li>
+                                        </ul>
+                                        <p>
+                                            More actions will be added in the future.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        Please note that this feature requires the device admin permission in order to work.
+                                        This is needed to detect failed unlock attempts and take the required actions.
+                                    </li>
+                                    <li>
+                                        This app NEVER uses ANY permissions without your agreement, they are ONLY used for the listed purposes.
+                                    </li>
+                                </ul>
                             </div>
                             <div id="video_container">
                                 <video autoplay muted loop height="480" width="216" id="demo">
@@ -79,7 +106,25 @@
                                 <div class="tip">Click to zoom</div>
                             </div>
                         </div>
-                        <h2>Try this app</h2>
+                        <p>
+                            AIP++ can be an effective tool for protecting personal data and confidential information from unauthorized access.
+                            However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
+                        </p>
+                        <h2 id="help_h1" class="h1">
+                            <div id="help_h" class="h"></div>
+                            Support
+                        </h2>
+                        <p>
+                            If you need help, or found a bug, or want to request a new feature, feel free to email me at <a href="mailto:denis0001.dev@ya.ru">denis0001.dev@ya.ru</a>.
+                            Also, you can send an issue on <a href="https://github.com/denis0001-dev/AIP-Website/issues/new">GitHub</a>.
+                        </p>
+                        <div class="center">
+                            <md-filled-button id="issues_btn">Open issues</md-filled-button>
+                        </div>
+                        <h2 id="download_h1" class="h1">
+                            <div id="download_h" class="h"></div>
+                            Try this app
+                        </h2>
                         <p>
                             AIP++ is available for Android.
                             This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
