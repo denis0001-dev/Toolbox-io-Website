@@ -2,7 +2,7 @@
 name: Application bug report
 about: Bug report for the application
 title: ''
-labels: App, bug
+labels: bug
 assignees: ''
 
 ---

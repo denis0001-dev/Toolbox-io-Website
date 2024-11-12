@@ -2,7 +2,7 @@
 name: Website bug report
 about: Bug report for the website
 title: ''
-labels: ''
+labels: bug, website
 assignees: denis0001-dev
 
 ---
