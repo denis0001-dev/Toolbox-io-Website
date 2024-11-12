@@ -338,6 +338,59 @@ async function notification(type: 'error' | 'success', _headline: string, _messa
 
 (window as any).notify = notification;
 
+async function loadReleases() {
+    // get releases
+    const MyOctokit = Octokit.plugin(restEndpointMethods);
+    octokit = new MyOctokit({
+        auth: token
+    });
+
+    const response: ReleasesResponse = await octokit.request('GET /repos/{owner}/{repo}/releases', {
+        owner: 'denis0001-dev',
+        repo: 'AIP-Website',
+        headers: {
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+    })
+
+    console.log(response)
+    const parsedData = parseReleaseData(response)
+    console.log(parsedData)
+
+    const releases: HTMLDivElement = document.getElementById("releases") as HTMLDivElement
+    parsedData.forEach((release: Release) => {
+        const releaseItem = document.createElement("div")
+        releaseItem.classList.add("release")
+        if (release.latest) {
+            releaseItem.classList.add("latest")
+        }
+        releaseItem.innerHTML = `
+            <div class="version">${release.version}</div>
+            <div class="latest_mark">Latest</div>
+            <div class="space"></div>
+            <md-filled-button class="download">
+                Download
+                <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                </svg>
+            </md-filled-button>
+        `;
+        releases.appendChild(releaseItem);
+        (releaseItem.querySelector(".download") as MdFilledButton).addEventListener("click", async () => {
+            try {
+                open(release.downloadUrl, "_self");
+            } catch (error) {
+                console.error("Error downloading asset:", error);
+            }
+        })
+        if (release.latest) {
+            const element = document.createElement("div");
+            element.classList.add("separator");
+            releases.appendChild(element);
+        }
+    })
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
     Array.from((document.getElementById("pages") as HTMLDivElement).children).forEach((tab, index: number) => {
         if (index != currentTabIndex) {
@@ -485,55 +538,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.addEventListener('touchstart', disableHover, true);
     document.addEventListener('mousemove', enableHover, true);
     enableHover();
-
-    // get releases
-    const MyOctokit = Octokit.plugin(restEndpointMethods);
-    octokit = new MyOctokit({
-        auth: token
-    });
-
-    const response: ReleasesResponse = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-        owner: 'denis0001-dev',
-        repo: 'AIP-Website',
-        headers: {
-            'X-GitHub-Api-Version': '2022-11-28'
-        }
-    })
-
-    console.log(response)
-    const parsedData = parseReleaseData(response)
-    console.log(parsedData)
-
-    const releases: HTMLDivElement = document.getElementById("releases") as HTMLDivElement
-    parsedData.forEach((release: Release) => {
-        const releaseItem = document.createElement("div")
-        releaseItem.classList.add("release")
-        if (release.latest) {
-            releaseItem.classList.add("latest")
-        }
-        releaseItem.innerHTML = `
-            <div class="version">${release.version}</div>
-            <div class="latest_mark">Latest</div>
-            <div class="space"></div>
-            <md-filled-button class="download">
-                Download
-                <svg slot="icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                    <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-                </svg>
-            </md-filled-button>
-        `;
-        releases.appendChild(releaseItem);
-        (releaseItem.querySelector(".download") as MdFilledButton).addEventListener("click", async () => {
-            try {
-                open(release.downloadUrl, "_self");
-            } catch (error) {
-                console.error("Error downloading asset:", error);
-            }
-        })
-        if (release.latest) {
-            const element = document.createElement("div");
-            element.classList.add("separator");
-            releases.appendChild(element);
-        }
-    })
+    loadReleases();
 });
