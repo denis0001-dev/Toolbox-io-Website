@@ -14,7 +14,7 @@ Sadly, the website works badly right now, so to download click the link above.
 
 _... and more_
 
-Every update is published to the website's repo. You can track my progress in this project if you're intrested.
+Every update is published to the website's repo. You can track my progress in this [project](https://github.com/users/denis0001-dev/projects/3) if you're intrested.
 ### Compatibility 
 This app is compatible with Android 7 and higher.
 The app was tested on the following devices:
