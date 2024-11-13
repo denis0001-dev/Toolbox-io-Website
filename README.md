@@ -17,6 +17,10 @@ _... and more_
 Every update is published to the website's repo. You can track my progress in this [project](https://github.com/users/denis0001-dev/projects/3) if you're intrested.
 ### Compatibility 
 This app is compatible with Android 7 and higher.
+
+Known issues:
+- On Android 11 and lower, there are problems with the splash screen animation.
+
 The app was tested on the following devices:
 | Android version | Brand     | Model                    | Status          | Related issues                                        |
 |-----------------|-----------|--------------------------|-----------------|-------------------------------------------------------|
