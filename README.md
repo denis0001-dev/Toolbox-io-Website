@@ -9,10 +9,10 @@ You can download this app [here](https://github.com/denis0001-dev/AIP-Website/re
 Sadly, the website works badly right now, so to download click the link above.
 ### Ultimate Plans
 
-- Expand this app to not only secure your device, but customize it too.
-- Fix all the bugs
+- [ ] Expand this app to not only secure your device, but customize it too.
+- [ ] Fix all the bugs
 
-_... and more
+_... and more_
 
 Every update is published to the website's repo. You can track my progress in this project if you're intrested.
 ### Compatibility 
