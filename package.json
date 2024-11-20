@@ -12,11 +12,18 @@
     "@octokit/core": "^6.1.2",
     "@octokit/plugin-rest-endpoint-methods": "^13.2.6",
     "@octokit/rest": "^21.0.2",
-    "@octokit/types": "^13.6.1"
+    "@octokit/types": "^13.6.1",
+    "@popmotion/easing": "^1.0.2",
+    "animate-css-grid": "^1.5.1",
+    "framesync": "^6.1.2",
+    "lodash.throttle": "^4.1.1",
+    "popmotion": "^11.0.5"
   },
   "type": "module",
   "devDependencies": {
     "@types/jquery": "^3.5.31",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }

@@ -3,24 +3,18 @@
     <head>
         <meta charset="UTF-8"/>
         <meta lang="en" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AIP++</title>
 
         <link rel="stylesheet" href="style.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+        <link href="fonts/rethink-sans/index.css" rel="stylesheet">
         <link rel="icon" href="favicon.svg" />
 
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script type="importmap">
+        <script src="jquery.js"></script>
+        <!-- <script type="importmap">
             {
               "imports": {
-                "@material/web/": "https://esm.run/@material/web/",
-                "@octokit/rest/": "https://esm.sh/@octokit/core/",
-                "@octokit/types/": "https://esm.sh/@octokit/types/",
-                "@octokit/plugin-rest-endpoint-methods/": "https://esm.sh/@octokit/plugin-rest-endpoint-methods/"
+                "@material/web/": "https://esm.run/@material/web/"
               }
             }
         </script>
@@ -29,13 +23,13 @@
             import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
 
             document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
-        </script>
+        </script> -->
         <!--suppress ES6ConvertVarToLetConst, JSUnusedGlobalSymbols -->
         <script>var exports = {};</script>
         <script type="module" src="main.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="fonts/material-symbols-outlined/index.css" />
     </head>
-    <body>
+    <body style="transform: scale(1.3); overflow: hidden;">
         <div id="header" class="top">
             <div class="icon appicon"></div>
             <div class="title">AIP++</div>
@@ -52,64 +46,139 @@
         <div class="wrapper">
             <div id="pages" style="left: 0;">
                 <div id="home_page" data-tabindex="0">
-                    <div id="main">
-                        <h1 id="headline">The best security for your device</h1>
+                    <div id="main" class="automargin">
+                        <h1 id="headline">All-in-One: Customization & Security</h1>
                         <p>
                             AIP++ (Anti-Intruder Protection++) is a program designed to protect your device from physical intruders.
                             It blocks access to applications that may pose a security threat.
                         </p>
                         <h2>Features</h2>
-                        <div class="side">
-                            <div class="text">
-                                <h3>App Locker</h3>
-                                <ul>
-                                    <li>
-                                        When you try to launch an application protected by AIP++, the device displays an "error" message.
-                                        In fact, there is no error, this is necessary to confuse the attacker.
-                                    </li>
-                                    <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
-                                    <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
-                                </ul>
-                                <h3>Unlock Protection</h3>
-                                <ul>
-                                    <li>
-                                        If someone tries to unlock your device, but fails multiple times, the following actions can be taken:
-                                        <h4>Alarm</h4>
-                                        <ul>
-                                            <li>
-                                                The device will play an alarm sound (you can change it if you want) at 100% volume.
-                                                Any attempts to change it will be prevented.
-                                            </li>
-                                        </ul>
-                                        <h4>Intruder photo</h4>
-                                        <ul>
-                                            <li>The device will take a photo from the front and back cameras.</li>
-                                            <li>You can configure the camera from which the photos will be taken.</li>
-                                        </ul>
-                                        <p>
-                                            More actions will be added in the future.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        Please note that this feature requires the device admin permission in order to work.
-                                        This is needed to detect failed unlock attempts and take the required actions.
-                                    </li>
-                                    <li>
-                                        This app NEVER uses ANY permissions without your agreement, they are ONLY used for the listed purposes.
-                                    </li>
-                                </ul>
+                        <div id="features">
+                            <div class="feature" id="applocker">
+                                <div class="feature-header">
+                                    <span class="material-symbols-outlined feature-icon">phonelink_lock</span>
+                                    <div class="feature-title">App Locker</div>
+                                    <div class="feature-close material-symbols-outlined">close</div>
+                                </div>
+                                <div class="feature-description">
+                                    Protects your apps from unauthorized access by showing the intruder a fake crash dialog.
+                                </div>
+
+                                <div class="feature-long-description textcenter">
+                                    <div class="side automargin">
+                                        <div class="text">
+                                            <ul>
+                                                <li>
+                                                    When you try to launch an application protected by AIP++, the device displays an "error" message.
+                                                    In fact, there is no error, this is necessary to confuse the attacker.
+                                                </li>
+                                                <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
+                                                <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
+                                            </ul>
+                                        </div>
+                                        <div id="video_container">
+                                            <video autoplay muted loop height="480" width="216" id="demo">
+                                                <source src="demo.webm" type="video/webm" />
+                                            </video>
+                                            <div class="tip">Click to zoom</div>
+                                        </div>
+                                    </div>
+                                    <div id="video_dialog" class="dialog"></div>
+                                </div>
                             </div>
-                            <div id="video_container">
-                                <video autoplay muted loop height="480" width="216" id="demo">
-                                    <source src="demo.webm" type="video/webm" />
-                                </video>
-                                <div class="tip">Click to zoom</div>
+                            <div class="feature" id="unlock_protection">
+                                <div class="feature-header">
+                                    <span class="material-symbols-outlined feature-icon">phonelink_lock</span>
+                                    <div class="feature-title">Unlock Protection</div>
+                                    <div class="feature-close material-symbols-outlined">close</div>
+                                </div>
+                                <div class="feature-description">
+                                    Takes actions if someone fails to unlock your phone in 2 attempts.
+                                </div>
+
+                                <div class="feature-long-description">
+                                    <ul class="automargin">
+                                        <li>
+                                            If someone tries to unlock your device, but fails multiple times, the following actions can be taken:
+                                            <h4>Alarm</h4>
+                                            <ul>
+                                                <li>
+                                                    The device will play an alarm sound (you can change it if you want) at 100% volume.
+                                                    Any attempts to change it will be prevented.
+                                                </li>
+                                            </ul>
+                                            <h4>Intruder photo</h4>
+                                            <ul>
+                                                <li>The device will take a photo from the front and back cameras.</li>
+                                                <li>You can configure the camera from which the photos will be taken.</li>
+                                            </ul>
+                                            <p>
+                                                More actions will be added in the future.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            Please note that this feature requires the device admin permission in order to work.
+                                            This is needed to detect failed unlock attempts and take the required actions.
+                                        </li>
+                                        <li>
+                                            This app NEVER uses ANY permissions without your agreement, they are ONLY used for the listed purposes.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature" id="tiles">
+                                <div class="feature-header">
+                                    <span class="material-symbols-outlined feature-icon">apps</span>
+                                    <div class="feature-title">Tiles</div>
+                                    <div class="feature-close material-symbols-outlined">close</div>
+                                </div>
+                                <div class="feature-description">
+                                    Useful tiles for Quick Settings
+                                </div>
+
+                                <div class="feature-long-description">
+                                    <div class="automargin textcenter">
+                                        Tiles are buttons in the <b><i>Quick Settings</i></b> of your device
+                                        (the menu that you open by swiping down from the top of the screen).
+                                        <h3>Sleep</h3>
+                                        When disabled, disables sleep mode until enabled again.
+                                        <div class="warning">
+                                            <span class="material-symbols-outlined warning-icon">warning</span>
+                                            Be careful, because if you forget to enable it, this can cause battery drain.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature" id="shortcuts">
+                                <div class="feature-header">
+                                    <span class="material-symbols-outlined feature-icon">shortcut</span>
+                                    <div class="feature-title">Shortcuts</div>
+                                    <div class="feature-close material-symbols-outlined">close</div>
+                                </div>
+                                <div class="feature-description">
+                                    Useful shortcuts for hidden apps on your device
+                                </div>
+                                <div class="feature-long-description">
+                                    <div class="automargin textcenter">
+                                        This feature will help you to quickly access almost any part of your device
+                                        (such as hidden apps, system settings, or other apps).
+                                        <h3>Files</h3>
+                                        The built-in <b><i>Files</i></b> app is hidden on most devices. But if you want
+                                        to access it, you can do that in this app! Just go to <b>Shortcuts</b> and press
+                                        <b>Add</b> below the <b><i>Files</i></b> button. You can choose how to add the
+                                        shortcut: as a shortcut, but with a watermark, or as a separate app, without the
+                                        watermark.
+                                        <div class="center">
+                                            <div class="img-bar" id="shortcuts_methods">
+                                                <img src="as_a_shortcut.png" alt="As a shortcut" />
+                                                <img src="as_a_separate_app.png" alt="As a separate app" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p>
-                            AIP++ can be an effective tool for protecting personal data and confidential information from unauthorized access.
-                            However, keep in mind that using it may cause inconvenience when working with some applications, especially those that require frequent access to.
-                        </p>
+
                         <h2 id="help_h1" class="h1">
                             <div id="help_h" class="h"></div>
                             Support
@@ -127,28 +196,12 @@
                         </h2>
                         <p>
                             AIP++ is available for Android.
-                            This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
-                            You can download this app below:
+                            This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to GitHub.
                         </p>
-                        <div id="releases">
-                            
-                        </div>
-                    </div>
-                </div>
-                <div id="issues_page" data-tabindex="1">
-                    <div id="issues_main">
-                        <div id="issues_header">
-                            <span class="material-symbols-outlined">search</span>
-                            <div id="issues_search_wrapper">
-                                <label for="issues_search"></label>
-                                <input type="text" id="issues_search" placeholder="Search for issues" />
-                            </div>
-                        </div>
-                        <div id="issues_list">
-                            <div class="loading">
-                                <md-circular-progress indeterminate></md-circular-progress>
-                                <p>Loading issues...</p>
-                            </div>
+                        <div class="center">
+                            <a href="https://github.com/denis0001-dev/AIP-Website/releases/latest">
+                                <md-filled-button id="download_btn">Download AIP++</md-filled-button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -173,6 +226,9 @@
                 </div>
             </div>
         </div>
-        <div id="video_dialog"></div>
+        <div id="card_dialog" class="dialog"></div>
+        <div id="loading">
+            <div class="appicon icon"></div>
+        </div>
     </body>
 </html>
