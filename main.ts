@@ -554,6 +554,6 @@ namespace Utils {
         loading.classList.remove("hidden")
         loading.remove()
         await delay(250)
-        document.body.style.overflow = "";
+        document.body.style.overflowX = "";
     });
 }
