@@ -5,29 +5,17 @@
         <meta lang="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AIP++</title>
+        <link rel="icon" href="res/favicon.svg" />
 
         <link rel="stylesheet" href="style.css" />
-        <link href="fonts/rethink-sans/index.css" rel="stylesheet">
-        <link rel="icon" href="favicon.svg" />
 
-        <script src="jquery.js"></script>
-        <!-- <script type="importmap">
-            {
-              "imports": {
-                "@material/web/": "https://esm.run/@material/web/"
-              }
-            }
-        </script>
-        <script type="module">
-            import '@material/web/all.js';
-            import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+        <link rel="stylesheet" href="fonts/rethink-sans/index.css">
+        <link rel="stylesheet" href="fonts/material-symbols-outlined/index.css" />
 
-            document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
-        </script> -->
+        <script src="lib/jquery.js"></script>
         <!--suppress ES6ConvertVarToLetConst, JSUnusedGlobalSymbols -->
         <script>var exports = {};</script>
         <script type="module" src="main.js"></script>
-        <link rel="stylesheet" href="fonts/material-symbols-outlined/index.css" />
     </head>
     <body style="transform: scale(1.3); overflow-x: hidden;">
         <div id="header" class="top">
@@ -78,7 +66,7 @@
                                         </div>
                                         <div id="video_container">
                                             <video autoplay muted loop height="480" width="216" id="demo">
-                                                <source src="demo.webm" type="video/webm" />
+                                                <source src="res/demo.webm" type="video/webm" />
                                             </video>
                                             <div class="tip">Click to zoom</div>
                                         </div>
@@ -170,8 +158,8 @@
                                         watermark.
                                         <div class="center">
                                             <div class="img-bar" id="shortcuts_methods">
-                                                <img src="as_a_shortcut.png" alt="As a shortcut" />
-                                                <img src="as_a_separate_app.png" alt="As a separate app" />
+                                                <img src="res/as_a_shortcut.png" alt="As a shortcut" />
+                                                <img src="res/as_a_separate_app.png" alt="As a separate app" />
                                             </div>
                                         </div>
                                     </div>

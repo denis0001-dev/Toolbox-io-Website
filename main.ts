@@ -549,11 +549,9 @@ namespace Utils {
         const loading: HTMLElement = document.getElementById("loading") as HTMLElement
         loading.classList.add("hidden")
         document.body.style.transform = ""
-        document.body.style.overflow = "hidden";
         await delay(250)
         loading.classList.remove("hidden")
         loading.remove()
         await delay(250)
-        document.body.style.overflowX = "";
     });
 }
