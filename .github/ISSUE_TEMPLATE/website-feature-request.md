@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: Website feature request
 about: Suggest an idea for this website
 title: ''
 labels: enhancement, website
