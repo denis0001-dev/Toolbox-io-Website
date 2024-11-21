@@ -118,14 +118,17 @@ namespace Utils {
             }
         });
 
-        $(window).on('scroll', function() {
+        const body_wrapper = $("#body_wrapper");
+        const header = $("#header");
+
+        body_wrapper.on('scroll', () => {
             // @ts-ignore
-            if ($(this).scrollTop() + $(this).height() >= $('#headline').position().top && scrollY !== 0) {
-                $('#header').removeClass("top");
+            if (body_wrapper.scrollTop() + body_wrapper.height() >= $('#headline').position().top && body_wrapper.scrollTop() !== 0) {
+                header.removeClass("top");
             }
             // @ts-ignore
             else {
-                $('#header').addClass("top");
+                header.addClass("top");
             }
         })
 
@@ -531,7 +534,7 @@ namespace Utils {
             let columns = getColumns(features);
             if (rows !== rowsNow || columns !== columnsNow) {
                 if ((innerWidth < width && innerWidth <= 1000) || (innerWidth > width && innerWidth > 1000)) {
-                    await delay(1000);
+                    await delay(500);
                 }
                 Array.from(features.children).forEach(item => {
                     if (item.classList.length === 0) item.remove();

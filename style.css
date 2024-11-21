@@ -3,7 +3,12 @@ html, body {
     color-scheme: dark;
     margin: 0;
     transition: transform 0.25s ease-out;
-    /* overflow-x: hidden; */
+    overflow: hidden;
+}
+
+#body_wrapper {
+    overflow: auto;
+    height: 100vh;
 }
 
 * {
@@ -102,7 +107,7 @@ body.hasHover #tabs .tab:not(.selected):hover {
     backdrop-filter: none;
     border-radius: 0;
 }
-body > .wrapper {
+body .wrapper {
     position: relative;
     margin-bottom: 20px;
 }
@@ -621,6 +626,7 @@ md-filled-button {
     text-decoration: none !important;
     cursor: pointer;
     color: white;
+    display: block;
 }
 
 md-filled-button:hover {
