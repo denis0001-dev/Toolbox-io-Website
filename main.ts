@@ -339,6 +339,7 @@ namespace Utils {
                     const left2 = computedStyle.left;
                     feature.style.top = "";
                     feature.style.left = "";
+                    // @ts-ignore
                     const top3 = (
                         Number(
                             computedStyle.top.replace("px", "")
@@ -347,6 +348,7 @@ namespace Utils {
                             features.getBoundingClientRect().y
                         ) - body_wrapper.scrollTop()
                     ) + "px";
+                    // @ts-ignore
                     const left3 = (
                         Number(
                             computedStyle.left.replace("px", "")

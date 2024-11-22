@@ -308,8 +308,10 @@ var Utils;
                     const left2 = computedStyle.left;
                     feature.style.top = "";
                     feature.style.left = "";
+                    // @ts-ignore
                     const top3 = (Number(computedStyle.top.replace("px", "")) + (replacement.getBoundingClientRect().y -
                         features.getBoundingClientRect().y) - body_wrapper.scrollTop()) + "px";
+                    // @ts-ignore
                     const left3 = (Number(computedStyle.left.replace("px", "")) + (replacement.getBoundingClientRect().x -
                         features.getBoundingClientRect().x) - body_wrapper.scrollLeft()) + "px";
                     feature.style.top = `${top2}`;
