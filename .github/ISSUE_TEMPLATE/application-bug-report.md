@@ -2,8 +2,8 @@
 name: Application bug report
 about: Bug report for the application
 title: ''
-labels: bug
-assignees: ''
+labels: app, bug
+assignees: denis0001-dev
 
 ---
 

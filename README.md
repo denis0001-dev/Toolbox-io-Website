@@ -22,11 +22,11 @@ Known issues:
 - On Android 11 and lower, there are problems with the splash screen animation.
 
 The app was tested on the following devices:
-| Android version | Brand     | Model                    | Status          | Related issues                                        |
-|-----------------|-----------|--------------------------|-----------------|-------------------------------------------------------|
-| 14              | Samsung   | Galaxy Tab A9+, emulator | ✅️ OK           |                                                       |
-| 11              | Blackview | A95                      | ⚠️ Has problems | https://github.com/denis0001-dev/AIP-Website/issues/4 |
-| 13              | Xiaomi    | Redmi Note 11            | ⚠️ Has problems |                                                       |
+| Android version | Brand     | Model                    | Status          | Related issues |
+|-----------------|-----------|--------------------------|-----------------|----------------|
+| 14              | Samsung   | Galaxy Tab A9+, emulator | ✅️ OK           |                |
+| 11              | Blackview | A95                      | ✅️ OK           |                |
+| 13              | Xiaomi    | Redmi Note 11            | ⚠️ Has problems |                |
 
 Feel free to open a pull request to add a device here :)
 ### Updates
