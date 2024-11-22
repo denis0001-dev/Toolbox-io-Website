@@ -309,9 +309,9 @@ var Utils;
                     feature.style.top = "";
                     feature.style.left = "";
                     const top3 = (Number(computedStyle.top.replace("px", "")) + (replacement.getBoundingClientRect().y -
-                        features.getBoundingClientRect().y) - scrollY) + "px";
+                        features.getBoundingClientRect().y) - body_wrapper.scrollTop()) + "px";
                     const left3 = (Number(computedStyle.left.replace("px", "")) + (replacement.getBoundingClientRect().x -
-                        features.getBoundingClientRect().x) - scrollX) + "px";
+                        features.getBoundingClientRect().x) - body_wrapper.scrollLeft()) + "px";
                     feature.style.top = `${top2}`;
                     feature.style.left = `${left2}`;
                     let tmpStyle = document.head.querySelector("style#tmp");

@@ -345,7 +345,7 @@ namespace Utils {
                         ) + (
                             replacement.getBoundingClientRect().y -
                             features.getBoundingClientRect().y
-                        ) - scrollY
+                        ) - body_wrapper.scrollTop()
                     ) + "px";
                     const left3 = (
                         Number(
@@ -353,7 +353,7 @@ namespace Utils {
                         ) + (
                             replacement.getBoundingClientRect().x -
                             features.getBoundingClientRect().x
-                        ) - scrollX
+                        ) - body_wrapper.scrollLeft()
                     ) + "px";
                     feature.style.top = `${top2}`;
                     feature.style.left = `${left2}`;
