@@ -118,12 +118,12 @@ namespace Utils {
             }
         });
 
-        const body_wrapper = $("body");
+        const body_wrapper = $("html");
         const header = $("#header");
 
-        body_wrapper.on('scroll', () => {
+        $(window).on('scroll', () => {
             // @ts-ignore
-            if (body_wrapper.scrollTop() + body_wrapper.height() >= $('#headline').position().top && body_wrapper.scrollTop() !== 0) {
+            if ($(window).scrollTop() + $(window).height() >= $('#headline').position().top && $(window).scrollTop() !== 0) {
                 header.removeClass("top");
             }
             // @ts-ignore
@@ -553,12 +553,12 @@ namespace Utils {
         })
 
         // @ts-ignore
-        const loading: HTMLElement = document.getElementById("loading") as HTMLElement
+        /* const loading: HTMLElement = document.getElementById("loading") as HTMLElement
         loading.classList.add("hidden")
         document.body.style.transform = ""
         await delay(250)
         loading.classList.remove("hidden")
         loading.remove()
-        await delay(250)
+        await delay(250) */
     });
 }

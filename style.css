@@ -5,16 +5,6 @@ html, body {
     transition: transform 0.25s ease-out;
 }
 
-html {
-    overflow: hidden !important;
-}
-
-body {
-    overflow: auto !important;
-    height: 100vh;
-    overflow-x: hidden !important;
-}
-
 * {
     font-family: "Rethink Sans", sans-serif;
 }
