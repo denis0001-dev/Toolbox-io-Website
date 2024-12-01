@@ -3,12 +3,16 @@ html, body {
     color-scheme: dark;
     margin: 0;
     transition: transform 0.25s ease-out;
-    overflow: hidden;
 }
 
-#body_wrapper {
-    overflow: auto;
+html {
+    overflow: hidden !important;
+}
+
+body {
+    overflow: auto !important;
     height: 100vh;
+    overflow-x: hidden !important;
 }
 
 * {

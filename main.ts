@@ -118,7 +118,7 @@ namespace Utils {
             }
         });
 
-        const body_wrapper = $("#body_wrapper");
+        const body_wrapper = $("body");
         const header = $("#header");
 
         body_wrapper.on('scroll', () => {
@@ -346,6 +346,7 @@ namespace Utils {
                         ) + (
                             replacement.getBoundingClientRect().y -
                             features.getBoundingClientRect().y
+                            // @ts-ignore
                         ) - body_wrapper.scrollTop()
                     ) + "px";
                     // @ts-ignore
@@ -355,6 +356,7 @@ namespace Utils {
                         ) + (
                             replacement.getBoundingClientRect().x -
                             features.getBoundingClientRect().x
+                            // @ts-ignore
                         ) - body_wrapper.scrollLeft()
                     ) + "px";
                     feature.style.top = `${top2}`;

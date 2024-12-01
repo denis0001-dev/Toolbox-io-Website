@@ -101,7 +101,7 @@ var Utils;
                 tab.style.overflow = "hidden";
             }
         });
-        const body_wrapper = $("#body_wrapper");
+        const body_wrapper = $("body");
         const header = $("#header");
         body_wrapper.on('scroll', () => {
             // @ts-ignore
@@ -310,10 +310,14 @@ var Utils;
                     feature.style.left = "";
                     // @ts-ignore
                     const top3 = (Number(computedStyle.top.replace("px", "")) + (replacement.getBoundingClientRect().y -
-                        features.getBoundingClientRect().y) - body_wrapper.scrollTop()) + "px";
+                        features.getBoundingClientRect().y
+                    // @ts-ignore
+                    ) - body_wrapper.scrollTop()) + "px";
                     // @ts-ignore
                     const left3 = (Number(computedStyle.left.replace("px", "")) + (replacement.getBoundingClientRect().x -
-                        features.getBoundingClientRect().x) - body_wrapper.scrollLeft()) + "px";
+                        features.getBoundingClientRect().x
+                    // @ts-ignore
+                    ) - body_wrapper.scrollLeft()) + "px";
                     feature.style.top = `${top2}`;
                     feature.style.left = `${left2}`;
                     let tmpStyle = document.head.querySelector("style#tmp");
