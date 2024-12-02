@@ -9,7 +9,7 @@ You can download this app [here](https://github.com/denis0001-dev/Toolbox-io-Web
 Sadly, the website works badly right now, so to download click the link above.
 ### Ultimate Plans
 
-- [ ] Expand this app to not only secure your device, but customize it too.
+- [X] Expand this app to not only secure your device, but customize it too.
 - [ ] Fix all the bugs
 
 _... and more_
