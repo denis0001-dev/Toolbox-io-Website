@@ -1,11 +1,11 @@
-### The ultimate security for your device
-AIP++ (Anti-Intruder Protection++) is a program designed to protect your device from physical intruders. It blocks access to applications that may pose a security threat.
+### The ultimate All-in-One Toolbox
+Toolbox.io is an All-in-One Toolbox with many useful features, such as security,  customization and tools.
 
 ### Try this app
 > [!NOTE]
 > This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to this website.
 
-You can download this app [here](https://github.com/denis0001-dev/AIP-Website/releases/latest).
+You can download this app [here](https://github.com/denis0001-dev/Toolbox-io-Website/releases/latest).
 Sadly, the website works badly right now, so to download click the link above.
 ### Ultimate Plans
 
@@ -14,12 +14,9 @@ Sadly, the website works badly right now, so to download click the link above.
 
 _... and more_
 
-Every update is published to the website's repo. You can track my progress in this [project](https://github.com/users/denis0001-dev/projects/3) if you're intrested.
+Every update is published to the website's repo. You can track my progress in this [project](https://github.com/users/denis0001-dev/projects/3) if you're in
 ### Compatibility 
 This app is compatible with Android 7 and higher.
-
-Known issues:
-- On Android 11 and lower, there are problems with the splash screen animation.
 
 The app was tested on the following devices:
 | Android version | Brand     | Model                    | Status          | Related issues |
