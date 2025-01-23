@@ -2,30 +2,30 @@
 name: Website bug report
 about: Bug report for the website
 title: ''
-labels: bug, website
+labels: баг, сайт
 assignees: denis0001-dev
 
 ---
 
-**Describe the bug**
-[A clear and concise description of what the bug is]
+**Проблема**
+[Подробное и понятное описание проблемы]
 
-**To Reproduce**
-Steps to reproduce the behavior:
-[Steps to reproduce]
+**Воспроизведение**
+Шаги для воспроизведения проблемы:
+[Шаги]
 
-**Expected behavior**
-[A clear and concise description of what you expected to happen]
+**Ожидаемое поведение**
+[Подробное и понятное описание того, что вы ожидали]
 
-**Screenshots**
-[If applicable, add screenshots to help explain your problem]
+**Скриншоты**
+[Если возможно, прикрепите скриншоты проблемы]
 
-**Configuration (please complete the following information):**
+**Конфигурация**
 
- - Device: [e.g tablet]
- - Device brand & model: [e.g. Blackview A95]
- - OS: [e.g Android 11/Ubuntu 22.04]
- - Browser: [e.g. Chrome 122]
+ - Устройство: [например планшет/телефон]
+ - Бренд и модель устройства: [например Blackview A95]
+ - ОС: [например Android 11/Ubuntu 22.04]
+ - Браузер: [например Chrome 122]
 
-**Additional context**
-[Add any other context about the problem here]
+**Дополнительная информация**
+[Добавьте дополнительную информацию о проблеме здесь]
