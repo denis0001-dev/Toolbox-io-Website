@@ -1,19 +1,20 @@
-# Security Policy
+# Что является уязвимостью
+Уязвимость — это недостаток или слабое место в приложении, которое может быть использовано злоумышленником для несанкционированного доступа, изменения или уничтожения данных, нарушения функциональности или других негативных последствий.
+Функция защиты не является уязвимостью.
 
-## Reporting a Vulnerability
-If your problem is related to security, then you need to **report it as a vulnerability** by following the instructions below.
-If it isn't, report it through **[issues](https://github.com/denis0001-dev/AIP-Website/issues/new/choose)**.
-Examples:
+| Пример                                 | Тип            |
+|----------------------------------------|----------------|
+| _Нет пароля в приложении_              | не уязвимость  |
+| _Пароль работает некорректно_          | уязвимость     |
+| _Нет шифрования данных_                | уязвимость     |
+| _Отсутствует проверка на ввод данных_  | уязвимость     |
+| _Слабая аутентификация_                | уязвимость     |
+| _Утечка информации через логи_         | уязвимость     |
+| _Пароль длиной не менее 8 символов_    | функция защиты |
+| _Двухфакторная аутентификация_         | функция защиты |
+| _Ограничение количества попыток входа_ | функция защиты |
 
-| Test case                                      | Report as     |
-|------------------------------------------------|---------------|
-| _The app locker works unstable_                | Vulnerability |
-| _The app isn't locked, i want a password lock_ | Issue         |
-
-If this is a _security feature_, report it through issues.
-
-> [!IMPORTANT]
-> Please **don't** report through issues, because this will reveal the vulnerability.
-
-Go to **[Security](https://github.com/denis0001-dev/AIP-Website/security)**, and click **[Report a vulnerability](https://github.com/denis0001-dev/AIP-Website/security)**.
-Fill in all the required fields and try to provide as much information as you can to help fixing this quicker.
+## Правила
+1. Если ваша проблема не является уязвимостью, сообщите через [проблему](https://github.com/denis0001-dev/AIP-Website/issues/new/choose).
+2. Нельзя опубликовывать такую проблему, поскольку злоумышленники могут этим воспользоваться.
+3. Все проблемы такого типа нужно направлять на denis0001.dev@ya.ru.
