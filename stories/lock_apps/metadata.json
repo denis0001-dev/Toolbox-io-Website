@@ -3,36 +3,35 @@
         "ru": "Как защитить ваши приложения",
         "en": "How to secure your apps"
     },
-    "parts": [
-        "lock_apps.aa",
-        "lock_apps.ab"
-    ],
+    "type": "tutorial",
     "timestamps": [
-        190,
-        608,
-        963
-    ],
-    "steps": [
         {
-            "ru": "Откройте **Блокировку приложений**",
-            "en": "Open **App Locker**",
-            "frame": 0
+            "file": "lock_apps_1.mp4",
+            "caption": {
+                "ru": "Откройте **Блокировку приложений**",
+                "en": "Open **App Locker**"
+            }
         },
         {
-            "ru": "Разрешите доступ к спец. возможностям",
-            "en": "Allow access to accessibility features",
-            "frame": 190
+            "file": "lock_apps_2.mp4",
+            "caption": {
+                "ru": "Разрешите доступ к спец. возможностям",
+                "en": "Allow access to accessibility features" 
+            }
         },
         {
-            "ru": "Добавьте приложения, которые хотите заблокировать",
-            "en": "Add apps to be locked",
-            "frame": 608
+            "file": "lock_apps_3.mp4",
+            "caption": {
+                "ru": "Добавьте приложения, которые хотите заблокировать",
+                "en": "Add apps to be locked"
+            }
         },
         {
-            "ru": "Протестируйте",
-            "en": "Test this",
-            "frame": 963
+            "file": "lock_apps_4.mp4",
+            "caption": {
+                "ru": "Протестируйте",
+                "en": "Test this"
+            }
         }
-    ],
-    "type": "tutorial"
+    ]
 }
