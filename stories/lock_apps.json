@@ -1,0 +1,38 @@
+{
+  "title": {
+    "ru": "Как защитить ваши приложения",
+    "en": "How to secure your apps"
+  },
+  "parts": [
+    "lock_apps.aa",
+    "lock_apps.ab"
+  ],
+  "timestamps": [
+    190,
+    608,
+    963
+  ],
+  "steps": [
+    {
+      "ru": "Откройте **Блокировку приложений**",
+      "en": "Open **App Locker**",
+      "frame": 0
+    },
+    {
+      "ru": "Разрешите доступ к спец. возможностям",
+      "en": "Allow access to accessibility features",
+      "frame": 190
+    },
+    {
+      "ru": "Добавьте приложения, которые хотите заблокировать",
+      "en": "Add apps to be locked",
+      "frame": 608
+    },
+    {
+      "ru": "Протестируйте",
+      "en": "Test this",
+      "frame": 963
+    }
+  ],
+  "type": "tutorial"
+}
